@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Play and Win Admin</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#0b0b16;color:#fff}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:230px;background:#131326;padding:22px 14px}
+.logo{font-size:21px;font-weight:800;color:#ffd43b;margin-bottom:30px;text-align:center}
+.menu{padding:13px 12px;margin:6px 0;border-radius:10px;color:#aaa}
+.menu.active,.menu:hover{background:#24243d;color:#ffd43b}
+.main{margin-left:230px;padding:22px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}
+.admin{background:#24243d;padding:10px 15px;border-radius:10px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stat{background:#17172b;border:1px solid #292944;padding:20px;border-radius:16px}
+.stat span{color:#999;font-size:13px}
+.stat h2{margin-top:8px;color:#ffd43b}
+.section{margin-top:25px}
+.title{font-size:20px;margin-bottom:14px}
+.card{background:#17172b;border:1px solid #292944;border-radius:16px;padding:18px;margin-bottom:12px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.tag{background:#163c2a;color:#65ffae;padding:6px 10px;border-radius:20px;font-size:11px}
+.details{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:15px}
+.detail{background:#10101e;padding:11px;border-radius:10px}
+.detail small{display:block;color:#888;margin-bottom:5px}
+.btn{border:0;padding:11px 15px;border-radius:10px;background:#ff8a00;color:white;font-weight:bold;margin-top:14px}
+.controls{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.control{background:#17172b;padding:18px;border-radius:15px;border:1px solid #292944}
+.control button{margin-top:12px}
+@media(max-width:800px){
+.sidebar{width:75px}
+.logo{font-size:12px}
+.menu{font-size:0;text-align:center}
+.menu:first-letter{font-size:20px}
+.main{margin-left:75px;padding:15px}
+.stats{grid-template-columns:repeat(2,1fr)}
+.details{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+
+<body>
+
+<aside class="sidebar">
+<div class="logo">👑 PLAY & WIN</div>
+<div class="menu active">📊 Dashboard</div>
+<div class="menu">👥 Users</div>
+<div class="menu">🏆 Tournaments</div>
+<div class="menu">💰 Deposits</div>
+<div class="menu">💸 Withdrawals</div>
+<div class="menu">👛 Wallet</div>
+<div class="menu">📱 QR & Payment</div>
+<div class="menu">⚙️ Website Settings</div>
+</aside>
+
+<main class="main">
+
+<div class="top">
+<div>
+<h1>Admin Dashboard</h1>
+<p style="color:#888;margin-top:5px">Play and Win Control Center</p>
+</div>
+<div class="admin">👤 Admin</div>
+</div>
+
+<div class="stats">
+<div class="stat"><span>Total Users</span><h2>1,248</h2></div>
+<div class="stat"><span>Total Deposits</span><h2>₹12,450</h2></div>
+<div class="stat"><span>Withdrawals</span><h2>₹8,920</h2></div>
+<div class="stat"><span>Revenue</span><h2>₹3,530</h2></div>
+</div>
+
+<section class="section">
+<div class="title">🏆 Active & Upcoming Tournaments</div>
+
+<div class="card">
+<div class="row">
+<h3>🐺 Lone Wolf</h3>
+<span class="tag">LIVE</span>
+</div>
+<div class="details">
+<div class="detail"><small>Map</small><b>Full Map</b></div>
+<div class="detail"><small>Entry</small><b>₹10</b></div>
+<div class="detail"><small>Prize</small><b>₹500</b></div>
+<div class="detail"><small>Mode</small><b>Lone Wolf</b></div>
+</div>
+<button class="btn">Edit Tournament</button>
+</div>
+
+<div class="card">
+<div class="row">
+<h3>⚔️ Clash Squad</h3>
+<span class="tag">LIVE</span>
+</div>
+<div class="details">
+<div class="detail"><small>Map</small><b>Bermuda</b></div>
+<div class="detail"><small>Entry</small><b>₹20</b></div>
+<div class="detail"><small>Prize</small><b>₹1,000</b></div>
+<div class="detail"><small>Mode</small><b>Clash Squad</b></div>
+</div>
+<button class="btn">Edit Tournament</button>
+</div>
+
+<div class="card">
+<div class="row">
+<h3>🗺️ Bermuda</h3>
+<span class="tag">UPCOMING</span>
+</div>
+<div class="details">
+<div class="detail"><small>Map</small><b>Bermuda</b></div>
+<div class="detail"><small>Entry</small><b>₹10</b></div>
+<div class="detail"><small>Prize</small><b>₹500</b></div>
+<div class="detail"><small>Mode</small><b>Battle Royale</b></div>
+</div>
+<button class="btn">Edit Tournament</button>
+</div>
+
+<div class="card">
+<div class="row">
+<h3>🎮 Full Map</h3>
+<span class="tag">UPCOMING</span>
+</div>
+<div class="details">
+<div class="detail"><small>Map</small><b>Full Map</b></div>
+<div class="detail"><small>Entry</small><b>₹25</b></div>
+<div class="detail"><small>Prize</small><b>₹1,000</b></div>
+<div class="detail"><small>Mode</small><b>Battle Royale</b></div>
+</div>
+<button class="btn">Edit Tournament</button>
+</div>
+
+</section>
+
+<section class="section">
+<div class="title">⚡ Quick Controls</div>
+
+<div class="controls">
+<div class="control">
+<h3>➕ Create Tournament</h3>
+<p style="color:#888;margin-top:7px">New tournament add karo.</p>
+<button class="btn">Create</button>
+</div>
+
+<div class="control">
+<h3>📱 Upload QR</h3>
+<p style="color:#888;margin-top:7px">Payment QR image manage karo.</p>
+<button class="btn">Upload QR</button>
+</div>
+
+<div class="control">
+<h3>🔐 Room ID / Password</h3>
+<p style="color:#888;margin-top:7px">Tournament room details set karo.</p>
+<button class="btn">Manage</button>
+</div>
+
+<div class="control">
+<h3>👛 Wallet Management</h3>
+<p style="color:#888;margin-top:7px">User wallet aur prize management.</p>
+<button class="btn">Manage Wallet</button>
+</div>
+</div>
+</section>
+
+</main>
+</body>
+  </html>
