@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Play and Win - Admin Panel</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  background:#050914;
+  color:#fff;
+  font-family:Arial,sans-serif;
+}
+
+.app{
+  min-height:100vh;
+  display:flex;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+  width:240px;
+  background:#0a1220;
+  border-right:1px solid #1c2d47;
+  padding:22px 15px;
+  position:fixed;
+  top:0;
+  bottom:0;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:900;
+  padding:5px 10px 30px;
+}
+
+.logo span{
+  color:#8b5cf6;
+}
+
+.menu{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.menu a{
+  color:#91a0b7;
+  text-decoration:none;
+  padding:13px 12px;
+  border-radius:11px;
+  font-size:14px;
+}
+
+.menu a:hover,
+.menu a.active{
+  background:#4324a8;
+  color:#fff;
+}
+
+/* MAIN */
+
+.main{
+  margin-left:240px;
+  width:calc(100% - 240px);
+  padding:25px;
+}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:25px;
+}
+
+.topbar h1{
+  font-size:27px;
+}
+
+.subtitle{
+  color:#8998ad;
+  font-size:13px;
+  margin-top:5px;
+}
+
+.admin{
+  background:#111e34;
+  border:1px solid #273a59;
+  padding:10px 14px;
+  border-radius:12px;
+}
+
+/* STAT CARDS */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.stat{
+  background:#0c1728;
+  border:1px solid #1d3150;
+  border-radius:17px;
+  padding:19px;
+}
+
+.stat-title{
+  color:#8998ad;
+  font-size:13px;
+}
+
+.stat-number{
+  font-size:25px;
+  font-weight:800;
+  margin-top:9px;
+}
+
+/* CONTENT */
+
+.content{
+  display:grid;
+  grid-template-columns:1.4fr 1fr;
+  gap:16px;
+  margin-top:18px;
+}
+
+.panel{
+  background:#0c1728;
+  border:1px solid #1d3150;
+  border-radius:17px;
+  padding:18px;
+}
+
+.panel h2{
+  font-size:18px;
+  margin-bottom:15px;
+}
+
+.tournament{
+  border-top:1px solid #1d2c43;
+  padding:15px 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.tournament:first-of-type{
+  border-top:0;
+}
+
+.small{
+  color:#8998ad;
+  font-size:12px;
+  margin-top:5px;
+}
+
+.status{
+  background:#123b2a;
+  color:#55e39a;
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:11px;
+}
+
+/* REQUESTS */
+
+.request{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 0;
+  border-bottom:1px solid #1d2c43;
+}
+
+.request:last-child{
+  border-bottom:0;
+}
+
+.pending{
+  background:#4b3610;
+  color:#ffd36b;
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:11px;
+}
+
+/* BUTTONS */
+
+.buttons{
+  display:flex;
+  gap:8px;
+}
+
+button{
+  border:0;
+  border-radius:9px;
+  padding:8px 11px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.approve{
+  background:#16a34a;
+  color:#fff;
+}
+
+.reject{
+  background:#dc2626;
+  color:#fff;
+}
+
+/* QUICK CONTROL */
+
+.controls{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-top:18px;
+}
+
+.control{
+  background:#0c1728;
+  border:1px solid #1d3150;
+  border-radius:15px;
+  padding:16px;
+  text-align:center;
+  cursor:pointer;
+}
+
+.control-icon{
+  font-size:25px;
+  margin-bottom:8px;
+}
+
+.control-name{
+  font-size:13px;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+  .sidebar{
+    width:70px;
+    padding:15px 8px;
+  }
+
+  .logo{
+    font-size:0;
+    text-align:center;
+    padding-bottom:20px;
+  }
+
+  .logo:first-letter{
+    font-size:25px;
+  }
+
+  .menu a{
+    font-size:0;
+    text-align:center;
+    padding:14px 5px;
+  }
+
+  .menu a::first-letter{
+    font-size:20px;
+  }
+
+  .main{
+    margin-left:70px;
+    width:calc(100% - 70px);
+    padding:15px;
+  }
+
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .content{
+    grid-template-columns:1fr;
+  }
+
+  .controls{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:500px){
+
+  .topbar h1{
+    font-size:21px;
+  }
+
+  .stats{
+    gap:9px;
+  }
+
+  .stat{
+    padding:14px;
+  }
+
+  .stat-number{
+    font-size:20px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+<div class="logo">
+👑 PLAY <span>AND WIN</span>
+</div>
+
+<nav class="menu">
+
+<a class="active" href="#">📊 Dashboard</a>
+<a href="#">👥 Users</a>
+<a href="#">🏆 Tournaments</a>
+<a href="#">💰 Deposits</a>
+<a href="#">💸 Withdrawals</a>
+<a href="#">👛 Wallet</a>
+<a href="#">📱 QR & Payment</a>
+<a href="#">⚙️ Website Settings</a>
+
+</nav>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+<div class="topbar">
+
+<div>
+<h1>Dashboard</h1>
+<div class="subtitle">
+Play and Win Admin Control Center
+</div>
+</div>
+
+<div class="admin">
+👤 Admin
+</div>
+
+</div>
+
+
+<!-- STATISTICS -->
+
+<section class="stats">
+
+<div class="stat">
+<div class="stat-title">Total Users</div>
+<div class="stat-number">1,248</div>
+</div>
+
+<div class="stat">
+<div class="stat-title">Total Deposits</div>
+<div class="stat-number">₹12,450</div>
+</div>
+
+<div class="stat">
+<div class="stat-title">Withdrawals</div>
+<div class="stat-number">₹8,920</div>
+</div>
+
+<div class="stat">
+<div class="stat-title">Revenue</div>
+<div class="stat-number">₹3,530</div>
+</div>
+
+</section>
+
+
+<!-- CONTENT -->
+
+<section class="content">
+
+<div class="panel">
+
+<h2>🏆 Active Tournaments</h2>
+
+<div class="tournament">
+
+<div>
+<strong>Free Fire — Bermuda</strong>
+<div class="small">
+Entry ₹10 • Prize ₹500
+</div>
+</div>
+
+<div class="status">
+LIVE
+</div>
+
+</div>
+
+
+<div class="tournament">
+
+<div>
+<strong>Free Fire — Full Map</strong>
+<div class="small">
+Entry ₹25 • Prize ₹1,000
+</div>
+</div>
+
+<div class="status">
+UPCOMING
+</div>
+
+</div>
+
+</div>
+
+
+<div class="panel">
+
+<h2>💳 Pending Requests</h2>
+
+<div class="request">
+
+<div>
+Deposit
+<div class="small">User #1024 • ₹200</div>
+</div>
+
+<div class="pending">
+PENDING
+</div>
+
+</div>
+
+
+<div class="request">
+
+<div>
+Withdrawal
+<div class="small">User #1088 • ₹500</div>
+</div>
+
+<div class="pending">
+PENDING
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- QUICK CONTROLS -->
+
+<section class="panel" style="margin-top:18px">
+
+<h2>⚡ Quick Controls</h2>
+
+<div class="controls">
+
+<div class="control">
+<div class="control-icon">🏆</div>
+<div class="control-name">
+Create Tournament
+</div>
+</div>
+
+<div class="control">
+<div class="control-icon">📱</div>
+<div class="control-name">
+Upload QR
+</div>
+</div>
+
+<div class="control">
+<div class="control-icon">🔐</div>
+<div class="control-name">
+Room ID / Password
+</div>
+</div>
+
+<div class="control">
+<div class="control-icon">💰</div>
+<div class="control-name">
+Manage Wallet
+</div>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- RECENT ACTIVITY -->
+
+<section class="panel" style="margin-top:18px">
+
+<h2>📋 Recent Activity</h2>
+
+<div class="tournament">
+<div>
+<strong>New user registered</strong>
+<div class="small">
+User #1248
+</div>
+</div>
+
+<div class="status">
+NEW
+</div>
+</div>
+
+
+<div class="tournament">
+<div>
+<strong>Deposit received</strong>
+<div class="small">
+₹500 • User #1190
+</div>
+</div>
+
+<div class="status
